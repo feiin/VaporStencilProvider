@@ -26,7 +26,16 @@ extension Node {
             })
             return newDict
         case Node.number(let number):
-            return number
+            switch number {
+            case Node.Number.double(let doubleValue):
+                return doubleValue
+            case Node.Number.int(let intValue):
+                return intValue
+            case Node.Number.uint(let uintValue):
+                return uintValue
+            default:
+                return number.double
+            }
         case Node.string(let str):
             return str
         default:
